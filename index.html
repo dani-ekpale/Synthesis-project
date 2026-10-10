@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ekpale Estates Luxury Property in Accra, Ghana</title>
+  <meta name="description" content="Buy, rent or book a shortlet. Browse premium homes, apartments, land and commercial property across Accra with Ekpale Estates.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%23e0a526'/%3E%3Cpath d='M10 29V17.5L20 9l10 8.5V29h-6.5v-8h-7v8H10z' fill='%230c1122'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="client">
+
+  <!-- ===================== DARK HERO HEADER ===================== -->
+  <header class="hero" id="top">
+    <div class="container nav" id="nav">
+      <a class="brand" href="#top" aria-label="Ekpale Estates home">
+        <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#e0a526"/><path d="M10 29V17.5L20 9l10 8.5V29h-6.5v-8h-7v8H10z" fill="#0c1122"/></svg>
+        <span><span class="brand__name">Ekpale</span><span class="brand__sub">ESTATES</span></span>
+      </a>
+
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="#results" data-mode="buy">Buy</a>
+        <a href="#results" data-mode="rent">Rent</a>
+        <a href="#results" data-mode="shortlet">Shortlet</a>
+      </nav>
+
+      <div class="nav__right">
+        <div class="cur" role="group" aria-label="Currency">
+          <button type="button" data-cur="GHS" aria-pressed="true">GHS</button>
+          <button type="button" data-cur="USD" aria-pressed="false">USD</button>
+        </div>
+        <div class="auth-slot" id="authSlot"></div>
+        <button class="burger" id="burger" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="container hero__inner">
+      <span class="eyebrow">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        Accra’s luxury property marketplace
+      </span>
+      <h1>Find a home worth <em>coming home to</em></h1>
+      <p class="lead">Homes, apartments, land and shortlets across Accra; curated by Ekpale Estates, priced in cedis and dollars.</p>
+
+      <!-- ===================== SEARCH WIDGET ===================== -->
+      <form class="search" id="searchForm" role="search" autocomplete="off">
+        <div class="tabs" role="tablist" aria-label="Listing type">
+          <button type="button" class="tab active" role="tab" data-mode="buy" aria-selected="true">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9h8v8l-9 9-8-8z"/><circle cx="15.5" cy="8.5" r="1.2"/></svg>Buy</button>
+          <button type="button" class="tab" role="tab" data-mode="rent" aria-selected="false">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3"/></svg>Rent</button>
+          <button type="button" class="tab" role="tab" data-mode="shortlet" aria-selected="false">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M8 3v4M16 3v4"/></svg>Shortlet</button>
+        </div>
+
+        <div class="fields">
+          <div class="field">
+            <label for="fLocation">Location</label>
+            <select class="ctrl ctrl--select" id="fLocation"><option value="">All locations</option></select>
+          </div>
+
+          <div class="field">
+            <label for="fType">Property type</label>
+            <select class="ctrl ctrl--select" id="fType"></select>
+          </div>
+
+          <!-- Price range popover -->
+          <div class="field field--pop">
+            <span class="lbl" id="priceLbl">Price range</span>
+            <button type="button" class="ctrl ctrl--btn" id="priceBtn" aria-haspopup="dialog" aria-expanded="false" aria-controls="pricePop" aria-labelledby="priceLbl priceLabel">
+              <span id="priceLabel">Any price</span>
+            </button>
+            <div class="popover" id="pricePop" role="dialog" aria-label="Price range">
+              <div class="pop-row">
+                <div>
+                  <label class="pop-label" for="minPrice">Min price</label>
+                  <select class="pop-select" id="minPrice"></select>
+                </div>
+                <div>
+                  <label class="pop-label" for="maxPrice">Max price</label>
+                  <select class="pop-select" id="maxPrice"></select>
+                </div>
+              </div>
+              <span class="pop-label">Popular ranges</span>
+              <ul class="presets" id="presets"></ul>
+              <div class="pop-actions">
+                <button type="button" class="link-btn" id="priceReset">Reset</button>
+                <button type="button" class="btn btn--dark btn--sm" id="priceDone">Done</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bedroom counter popover -->
+          <div class="field field--pop">
+            <span class="lbl" id="bedsLbl">Bedrooms</span>
+            <button type="button" class="ctrl ctrl--btn" id="bedsBtn" aria-haspopup="dialog" aria-expanded="false" aria-controls="bedsPop" aria-labelledby="bedsLbl bedsLabel">
+              <span id="bedsLabel">Any beds</span>
+            </button>
+            <div class="popover popover--sm" id="bedsPop" role="dialog" aria-label="Bedrooms">
+              <span class="pop-label">Minimum bedrooms</span>
+              <div class="stepper">
+                <button type="button" id="bedsMinus" aria-label="Fewer bedrooms">−</button>
+                <output id="bedsVal" aria-live="polite">Any</output>
+                <button type="button" id="bedsPlus" aria-label="More bedrooms">+</button>
+              </div>
+              <div class="bed-chips" id="bedChips">
+                <button type="button" data-beds="0">Any</button>
+                <button type="button" data-beds="1">1+</button>
+                <button type="button" data-beds="2">2+</button>
+                <button type="button" data-beds="3">3+</button>
+                <button type="button" data-beds="4">4+</button>
+                <button type="button" data-beds="5">5+</button>
+              </div>
+              <div class="pop-actions">
+                <button type="button" class="link-btn" id="bedsReset">Reset</button>
+                <button type="button" class="btn btn--dark btn--sm" id="bedsDone">Done</button>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn--gold search-btn">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+            Search
+          </button>
+        </div>
+
+        <button type="button" class="more-toggle" id="moreToggle" aria-expanded="false" aria-controls="more">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+          More search options
+        </button>
+        <div class="more" id="more" hidden>
+          <div class="more__kw">
+            <label class="pop-label" for="fKeyword">Keyword</label>
+            <input type="search" id="fKeyword" placeholder="e.g. pool, gated, rooftop">
+          </div>
+          <label class="check"><input type="checkbox" id="fPremium"> <span>Premium listings only</span></label>
+          <label class="check"><input type="checkbox" id="fSaved"> <span>Saved homes only</span></label>
+          <button type="button" class="link-btn" id="clearAll">Clear all filters</button>
+        </div>
+      </form>
+
+      <div class="stats" id="stats" aria-label="Marketplace statistics"></div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== BROWSE BY TYPE ===================== -->
+    <section class="section container" aria-labelledby="typeHeading">
+      <p class="kicker">Browse by type</p>
+      <h2 class="display" id="typeHeading">What kind of property are you after?</h2>
+      <p class="sub">Jump straight into the category that fits your search.</p>
+      <div class="chips" id="typeChips" role="group" aria-label="Property types"></div>
+    </section>
+
+    <!-- ===================== RESULTS GRID ===================== -->
+    <section class="section container" id="results" aria-labelledby="resultsHeading">
+      <div class="results-head">
+        <div>
+          <p class="kicker" id="resultsKicker">Properties for sale</p>
+          <h2 class="display" id="resultsHeading">Explore our home options</h2>
+          <p class="sub" id="resultCount" aria-live="polite"></p>
+        </div>
+        <div class="sort">
+          <label for="fSort">Sort by</label>
+          <select id="fSort">
+            <option value="featured">Featured</option>
+            <option value="newest">Newest</option>
+            <option value="priceAsc">Price: low to high</option>
+            <option value="priceDesc">Price: high to low</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid" id="grid"></div>
+
+      <div class="empty" id="empty" hidden>
+        <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4M8.5 11h5"/></svg>
+        <h3>No properties match your search</h3>
+        <p>Try widening your price range or removing a filter.</p>
+        <button type="button" class="btn btn--dark" id="emptyReset">Reset filters</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <a class="brand" href="#top">
+          <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#e0a526"/><path d="M10 29V17.5L20 9l10 8.5V29h-6.5v-8h-7v8H10z" fill="#0c1122"/></svg>
+          <span><span class="brand__name">Ekpale</span><span class="brand__sub">ESTATES</span></span>
+        </a>
+        <p>Luxury homes, land and shortlets across Accra, Ghana.</p>
+      </div>
+      <div class="footer__meta">
+        <span>© <span id="year"></span> Ekpale Estates · Prototype v1</span>
+        <button type="button" class="link-btn link-btn--light" id="footerAdmin">Staff login</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== PROPERTY DETAIL + INQUIRY MODAL ===================== -->
+  <div class="modal" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="detailTitle" aria-hidden="true">
+    <div class="modal__panel modal__panel--lg">
+      <button type="button" class="modal__close" data-close aria-label="Close">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <div id="detailContent"></div>
+    </div>
+  </div>
+
+  <!-- ===================== STAFF LOGIN MODAL ===================== -->
+  <div class="modal" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle" aria-hidden="true">
+    <div class="modal__panel">
+      <button type="button" class="modal__close modal__close--flat" data-close aria-label="Close">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <h2 class="modal__title" id="loginTitle">Staff sign in</h2>
+      <p class="modal__sub">Enter the admin passcode to manage listings and inquiries.</p>
+      <form id="loginForm" novalidate>
+        <div class="fg">
+          <label for="loginPass">Admin passcode</label>
+          <input type="password" id="loginPass" autocomplete="current-password" required>
+          <span class="err" id="loginErr" role="alert"></span>
+        </div>
+        <button type="submit" class="btn btn--dark btn--block">Sign in</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
